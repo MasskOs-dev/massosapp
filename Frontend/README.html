@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Quantum Browser | User Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f7f6;
+      --surface: #ffffff;
+      --ink: #172b32;
+      --muted: #53696f;
+      --line: #d8e1df;
+      --teal: #087f83;
+      --teal-pale: #e1f1ef;
+      --amber: #a85e20;
+      --code: #eef3f2;
+      font-family: "Noto Sans", "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); }
+    a { color: var(--teal); text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+    .masthead { color: #f3fbfa; background: #17343b; border-bottom: 4px solid #22a2a0; }
+    .masthead-inner { width: min(1080px, calc(100% - 40px)); margin: auto; padding: 34px 0 30px; display: flex; align-items: center; gap: 24px; }
+    .brand-mark { width: 112px; height: 112px; flex: 0 0 112px; overflow: hidden; border: 1px solid #83cbc5; border-radius: 18px; background: #d5dcda; }
+    .brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .eyebrow { margin: 0 0 4px; color: #82d9d1; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.12; }
+    .lead { max-width: 690px; margin: 12px 0 0; color: #d0e1df; font-size: 1.05rem; }
+    .layout { width: min(1080px, calc(100% - 40px)); margin: 30px auto 70px; display: grid; grid-template-columns: 215px minmax(0, 1fr); gap: 48px; align-items: start; }
+    nav { position: sticky; top: 20px; padding: 16px 0; border-top: 2px solid var(--teal); }
+    nav strong { display: block; margin-bottom: 8px; }
+    nav a { display: block; padding: 5px 0; color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--teal); text-decoration: underline; }
+    main { min-width: 0; }
+    section { padding: 0 0 25px; margin: 0 0 27px; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+    h2 { margin: 0 0 11px; font-size: 1.42rem; line-height: 1.3; }
+    h3 { margin: 19px 0 6px; font-size: 1.04rem; }
+    p { margin: 8px 0 12px; }
+    ul, ol { padding-left: 22px; margin: 8px 0 12px; }
+    li { margin: 4px 0; }
+    code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 0.9em; }
+    code { padding: 2px 5px; border-radius: 4px; background: var(--code); overflow-wrap: anywhere; }
+    pre { margin: 12px 0; padding: 14px 16px; overflow-x: auto; border-left: 3px solid var(--teal); background: var(--code); line-height: 1.5; }
+    pre code { padding: 0; background: none; }
+    .note { padding: 12px 15px; border-left: 3px solid var(--amber); background: #fff4e7; color: #4a3525; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0; background: var(--surface); }
+    th, td { padding: 9px 11px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-size: 0.83rem; text-transform: uppercase; }
+    td:first-child { white-space: nowrap; }
+    footer { padding: 18px 0; color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 760px) {
+      .masthead-inner { width: min(100% - 28px, 640px); align-items: flex-start; gap: 16px; }
+      .brand-mark { width: 76px; height: 76px; flex-basis: 76px; border-radius: 12px; }
+      .layout { width: min(100% - 28px, 640px); margin-top: 22px; display: block; }
+      nav { position: static; margin-bottom: 28px; }
+      nav a { display: inline-block; margin: 0 12px 4px 0; }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --paper: #121d20; --surface: #1b292d; --ink: #e5efed; --muted: #a2b7b4; --line: #34484a; --teal: #72d0c8; --teal-pale: #203a3a; --amber: #f1bb78; --code: #1b292d; }
+      .note { background: #332b20; color: #f5dfc2; }
+      .masthead { background: #0d191d; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand-mark"><img src="../assets/logo.jpeg" alt="Quantum Browser logo"></div>
+      <div>
+        <p class="eyebrow">Desktop browser guide</p>
+        <h1>Quantum Browser</h1>
+        <p class="lead">A QtWebEngine browser with session restore, private tabs, adjustable privacy controls, and a compact tab-based interface.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav aria-label="Guide contents">
+      <strong>On this page</strong>
+      <a href="#about">About</a>
+      <a href="#start">Quick start</a>
+      <a href="#use">Using the browser</a>
+      <a href="#privacy">Privacy and safety</a>
+      <a href="#media">Video and certificates</a>
+      <a href="#extensions">Extensions</a>
+      <a href="#build">Build and install</a>
+      <a href="#limits">Compatibility notes</a>
+    </nav>
+
+    <main>
+      <section id="about">
+        <h2>About Quantum Browser</h2>
+        <p>Quantum Browser is a desktop web browser built with Python, PySide6, Qt Quick, and QtWebEngine. Chromium renders web pages; QML provides the browser interface.</p>
+        <p>It was made to provide a straightforward browser that can restore ordinary tabs, keep private tabs separate, expose privacy settings, and use Qt's native WebEngine capabilities instead of a custom web renderer.</p>
+        <p>The JPEG logo used on this page is <code>../assets/logo.jpeg</code>. The running application uses the PNG logo for its window and start page.</p>
+      </section>
+
+      <section id="start">
+        <h2>Quick start</h2>
+        <h3>Run from source</h3>
+        <p>Use Python 3.12 or newer and install the dependencies declared by the project:</p>
+        <pre><code>python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r Frontend/requirements.txt
+python Frontend/main.py</code></pre>
+        <p>Qt 6.9 or newer is required for the profile-prototype API used by the browser. On Linux, a working desktop session and QtWebEngine system libraries are also required.</p>
+        <h3>Install a Debian package</h3>
+        <p>If you have the locally built package, install it from the project directory with:</p>
+        <pre><code>sudo apt install ./Frontend/dist/quantum-browser_0.1.0_amd64.deb</code></pre>
+        <p>The package bundles QtWebEngine and is consequently large. Installing it requires administrator permission.</p>
+      </section>
+
+      <section id="use">
+        <h2>Using the browser</h2>
+        <ul>
+          <li><strong>Search or navigate:</strong> type a search phrase or URL in the address field. Google is the initial search provider; change providers in Settings → General.</li>
+          <li><strong>Open a normal tab:</strong> use the plus button or <kbd>Ctrl+T</kbd>.</li>
+          <li><strong>Open a private tab:</strong> use the eye-off button or <kbd>Ctrl+Shift+N</kbd>.</li>
+          <li><strong>Close a tab:</strong> use its close icon, middle-click it, or press <kbd>Ctrl+W</kbd>.</li>
+          <li><strong>Move between tabs:</strong> use <kbd>Ctrl+Tab</kbd>.</li>
+          <li><strong>Focus the address field:</strong> press <kbd>Ctrl+L</kbd>.</li>
+          <li><strong>Navigate back/forward:</strong> use the toolbar buttons or <kbd>Alt+Left</kbd>/<kbd>Alt+Right</kbd>.</li>
+          <li><strong>Manage saved pages:</strong> use the star for bookmarks, the clock for session history, and the download icon for downloads.</li>
+        </ul>
+        <p>The address and title bar hide after 30 seconds without pointer movement. Move the pointer over the window to reveal them; the tab strip remains visible.</p>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy and safety</h2>
+        <ul>
+          <li><strong>Session restore:</strong> ordinary open-tab URLs, titles, and selected-tab position are saved in the user's Qt settings. At most 20 tabs are retained.</li>
+          <li><strong>Private tabs:</strong> they use an off-the-record profile with in-memory cookies and cache. Private tab URLs are excluded from session restore and the browser history list. When the last private tab closes, cookies, cache, and private download entries are cleared.</li>
+          <li><strong>History:</strong> the browser's history panel is in-memory for the current run. It is separate from session restore.</li>
+          <li><strong>Tracker blocking:</strong> the built-in domain list is enabled by default. It is not a full replacement for a maintained filter-list extension.</li>
+          <li><strong>HTTPS upgrade:</strong> optional in Settings → Privacy. It is off by default so HTTP-only sites remain reachable.</li>
+          <li><strong>Site permissions:</strong> requests for camera, microphone, location, notifications, and similar capabilities prompt for an explicit decision.</li>
+          <li><strong>WebRTC:</strong> Settings → Security can restrict WebRTC to public interfaces, which reduces local IP exposure but may affect some calls.</li>
+        </ul>
+        <p class="note">Private mode limits data saved by this browser profile. It does not hide traffic from websites, search providers, network operators, or the internet service provider.</p>
+      </section>
+
+      <section id="media">
+        <h2>Video and certificates</h2>
+        <p>Web pages use QtWebEngine's Chromium media stack. HTML5 media playback, autoplay, and fullscreen requests are enabled. Downloads are managed by the browser and saved to the system Downloads folder.</p>
+        <p>Video compatibility depends on codecs compiled into the installed QtWebEngine build. Some services require Widevine/DRM, which this application does not bundle or guarantee. A browser setting cannot add a missing codec or DRM module.</p>
+        <p>For an invalid TLS certificate, the browser rejects non-overridable failures. When Qt marks a certificate error as overridable, the browser shows a one-time Continue option. Only proceed if you trust the site and understand the risk; a certificate warning can indicate interception or a misconfigured server.</p>
+        <p>The Chromium <code>net_error -202</code> commonly means the certificate authority is not trusted. The lasting fix is to correct the server certificate or install the legitimate CA certificate in the operating system's trust store, not to disable certificate checks globally.</p>
+        <p>Messages such as <code>chat.init: chat button not found</code> originate in the loaded website's JavaScript. They are not browser startup errors.</p>
+      </section>
+
+      <section id="extensions">
+        <h2>Extensions</h2>
+        <p>Open Settings → Extensions to load a local Chromium <code>.crx</code> file or an unpacked extension directory, toggle extensions, or remove them. Direct Chrome Web Store installation is not implemented. Extensions receive the permissions declared by their manifests.</p>
+        <p>The built-in tracker blocker is enabled by default. AdGuard is not bundled; install it only from a trusted source and review its permissions.</p>
+      </section>
+
+      <section id="build">
+        <h2>Build and install</h2>
+        <p>The source application lives in <code>Frontend/</code>. QML files define the interface, while <code>main.py</code> owns the WebEngine profiles, privacy interceptor, session settings, and downloads. The Feather icon pack is declared in <code>requirements.txt</code>.</p>
+        <p>The Linux package is built as an amd64 Debian package for Ubuntu 24.04/Linux Mint 22-compatible systems. It installs the app under <code>/opt/quantum-browser</code> and adds a desktop launcher.</p>
+      </section>
+
+      <section id="limits">
+        <h2>Compatibility notes</h2>
+        <ul>
+          <li>Websites can change their layout or scripts at any time; website console warnings do not necessarily indicate a browser failure.</li>
+          <li>Some sites reject embedded browsers, require DRM, or rely on codecs unavailable in the QtWebEngine build.</li>
+          <li>Certificate overrides are per connection and are not a way to make an invalid certificate trustworthy.</li>
+          <li>The bundled Debian package is self-contained and substantially larger than the source project because it includes Qt and Chromium.</li>
+        </ul>
+      </section>
+
+      <footer>Quantum Browser · User guide</footer>
+    </main>
+  </div>
+</body>
+</html>
